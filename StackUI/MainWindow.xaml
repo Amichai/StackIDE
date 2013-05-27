@@ -11,26 +11,30 @@
                         <ad:LayoutAnchorablePane DockWidth="100">
                             <ad:LayoutAnchorable x:Name="stack" FloatingWidth="50" AutoHideMinWidth="50" AutoHideWidth="100" FloatingLeft="50" CanHide="False" 
                                                     CanAutoHide="True" CanClose="False" CanFloat="True" Title="The Stack" >
+                                    <ScrollViewer>
                                 <StackPanel Background="White" Orientation="Vertical">
                                     <StackPanel Orientation="Horizontal">
                                         <TextBox Width="100" Margin="10" Name="textbox" KeyUp="textbox_KeyUp_1"></TextBox>
                                         <Button Margin="10" Width="80" Click="Button_Click_1">Push</Button>
                                     </StackPanel>
-                                    <StackPanel Orientation="Horizontal">
-                                        <StackPanel>
-                                            <TextBlock FontWeight="Bold">The Stack:</TextBlock>
-                                            <ItemsControl Margin="10" Name="stackControl" Width="200">
-                                                <ItemsControl.ItemTemplate>
-                                                    <DataTemplate>
-                                                        <Border BorderBrush="Blue" BorderThickness="1">
-                                                            <TextBlock Text="{Binding}" TextWrapping="Wrap" Height="Auto"></TextBlock>
-                                                        </Border>
-                                                    </DataTemplate>
-                                                </ItemsControl.ItemTemplate>
-                                            </ItemsControl>
-                                        </StackPanel>
-                                    </StackPanel>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <TextBlock FontWeight="Bold" Grid.Row="0">The Stack:</TextBlock>
+                                        <ItemsControl Margin="10" Name="stackControl" Grid.Row="1" >
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate>
+                                                    <Border BorderBrush="LightGray" BorderThickness="1">
+                                                        <TextBlock Text="{Binding}" TextWrapping="Wrap" Height="Auto"></TextBlock>
+                                                    </Border>
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                        </ItemsControl>
+                                    </Grid>
                                 </StackPanel>
+                                    </ScrollViewer>
                             </ad:LayoutAnchorable>
                         </ad:LayoutAnchorablePane>
                         <ad:LayoutAnchorablePane DockWidth="200">
@@ -71,7 +75,5 @@
                 </ad:LayoutPanel>
             </ad:LayoutRoot>
         </ad:DockingManager>
-            
     </Grid>
-
 </Window>
